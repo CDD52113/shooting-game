@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>射击小游戏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        canvas {
+            border: 3px solid white;
+            background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
+            display: block;
+            margin: 20px auto;
+            cursor: crosshair;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .info {
+            color: white;
+            font-size: 18px;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .game-over {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .game-over h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-over p {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .game-over button {
+            margin-top: 20px;
+            padding: 10px 30px;
+            font-size: 18px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .game-over button:hover {
+            background: #764ba2;
+        }
+
+        .controls {
+            color: white;
+            font-size: 14px;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 射击小游戏</h1>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div class="info">
+            <div class="score">
+                得分: <span id="score">0</span> | 生命: <span id="health">3</span> | 时间: <span id="time">60</span>s
+            </div>
+        </div>
+        <div class="controls">
+            💡 移动鼠标瞄准，点击射击敌人。消灭所有敌人赢得游戏！
+        </div>
+    </div>
+
+    <div class="game-over" id="gameOver">
+        <h1 id="gameOverTitle">游戏结束</h1>
+        <p>最终得分: <span id="finalScore">0</span></p>
+        <button onclick="location.reload()">重新开始</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
